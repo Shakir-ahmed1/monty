@@ -22,20 +22,14 @@ void push(stack_t **stack, unsigned int line_number)
 	}
 	new->n = get_number(line_number);
 	new->next = NULL;
-	if (*stack == NULL)
+	if (1)
 	{
 		new->prev = NULL;
-		*stack = new;
-		return;
-	}
-	else
-	{
-		temp = (*stack)->next;
-		new->prev = *stack;
-		new->next = temp;
-		if (tmp)
-			temp->prev = new;
-		(*stack)->next = new;
+		new->next = *stack;
+		if (*stack)
+			(*stack)->prev = new;
+		(*stack) = new;
+		
 		return;
 	}
 }
