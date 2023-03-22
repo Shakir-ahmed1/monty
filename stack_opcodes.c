@@ -9,6 +9,7 @@ void push(stack_t **stack, unsigned int line_number)
 {
 	stack_t *new, *temp;
 
+	(void) temp;
 	if (stack == NULL)
 	{
 		fprintf(stderr, "Error: invalid stack\n");
@@ -37,6 +38,7 @@ void pall(stack_t **stack, unsigned int line_number)
 {
 	stack_t *temp;
 
+	(void) temp;
 	(void) line_number;
 	if (stack == NULL)
 	{
