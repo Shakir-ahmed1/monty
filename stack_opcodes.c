@@ -23,7 +23,7 @@ void push(stack_t **stack, unsigned int line_number)
 	}
 	new->n = get_number(line_number);
 	new->next = NULL;
-	if (*stack === NULL)
+	if (*stack == NULL)
 	{
 		new->next = NULL;
 		new->prev = NULL;
