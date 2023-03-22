@@ -44,14 +44,9 @@ void pall(stack_t **stack, unsigned int line_number)
 		exit(EXIT_FAILURE);
 	}
 	temp = *stack;
-	while (temp->next)
-	{
-		printf("%d\n", temp->n);
-		temp = temp->next;
-	}
 	while (temp)
 	{
 		printf("%d\n", temp->n);
-		temp = temp->prev;
+		temp = temp->next;
 	}
 }
