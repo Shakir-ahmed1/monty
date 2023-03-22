@@ -9,6 +9,7 @@ void push(stack_t **stack, unsigned int line_number)
 {
 	stack_t *new, *temp;
 
+	(void) temp;
 	if (stack == NULL)
 	{
 		fprintf(stderr, "Error: invalid stack\n");
@@ -31,14 +32,9 @@ void push(stack_t **stack, unsigned int line_number)
 	else
 	{
 		temp = *stack;
-		while (temp->next)
-		{
-			temp = temp->next;
-		}
-		new->prev = temp;
-		temp->next = new;
-		new->prev = temp;
-		temp->next = new;
+		(*stack)->prev = new;
+		new->next = *stack;
+		(*stack) = new;
 		return;
 	}
 }
@@ -53,13 +49,9 @@ void pall(stack_t **stack, unsigned int line_number)
 		exit(EXIT_FAILURE);
 	}
 	temp = *stack;
-	while (temp->next)
-	{
-		temp = temp->next;
-	}
 	while (temp)
 	{
 		printf("%d\n", temp->n);
-		temp = temp->prev;
+		temp = temp->next;
 	}
 }
