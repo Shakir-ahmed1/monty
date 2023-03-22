@@ -37,6 +37,8 @@ void push(stack_t **stack, unsigned int line_number)
 		}
 		new->prev = temp;
 		temp->next = new;
+		new->prev = temp;
+		temp->next = new;
 		return;
 	}
 }
@@ -51,9 +53,13 @@ void pall(stack_t **stack, unsigned int line_number)
 		exit(EXIT_FAILURE);
 	}
 	temp = *stack;
+	while (temp->next)
+	{
+		temp = temp->next;
+	}
 	while (temp)
 	{
 		printf("%d\n", temp->n);
-		temp = temp->next;
+		temp = temp->prev;
 	}
 }

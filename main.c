@@ -29,6 +29,8 @@ int main (int argc, char *argv[])
 	stack_t *head;
 
 	commands = malloc(sizeof(char)*10000);
+	if (!commands)
+		error_handler(ERR_MALLOC, 0);
 	if (argc != 2)
 	{
 		fprintf(stderr, "USAGE: monty file\n");

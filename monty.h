@@ -11,6 +11,19 @@
 
 #define CMD_COUNT 2
 
+/* error macros */
+#define ERR_MALLOC 4
+#define ERR_PUSH 5
+#define ERR_EMPTYSTACK 6
+#define ERR_POP 7
+#define ERR_SWAP 8
+#define ERR_ADD 9
+#define ERR_SUB 10
+#define ERR_DIV 11
+#define ERR_MUL 12
+#define ERR_MOD 13
+#define ERR_PCHAR 14
+
 extern char *commands;
 /**
  * struct stack_s - doubly linked list representation of a stack (or queue)
@@ -48,4 +61,5 @@ char *get_command(unsigned int line);
 int get_number(unsigned int line);
 unsigned int line_manager(unsigned int line);
 unsigned int line_count();
+void error_handler(int a, int li);
 #endif

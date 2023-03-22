@@ -74,7 +74,7 @@ char *get_command(unsigned int line)
  */
 int get_number(unsigned int line)
 {
-	unsigned int i = 1;
+	unsigned int i = 1, j, condition = 0;
 	int result = 0;
 	char *cmd;
 	char *temp;
@@ -93,7 +93,7 @@ int get_number(unsigned int line)
 		exit(EXIT_FAILURE);
 	cmd = malloc(sizeof(char) * 16);
 	if (cmd == NULL)
-		exit(EXIT_FAILURE);
+		error_handler(ERR_MALLOC, 0);
 	i = 0;
 	while ((*temp != ' ' && *temp != '\n') && i < 16)
 	{
@@ -101,7 +101,7 @@ int get_number(unsigned int line)
 		i++;
 	}
 	if (*temp == '\n')
-		exit(EXIT_FAILURE);
+		error_handler(ERR_PUSH, line);
 	while (*temp == ' ')
 		temp++;
 	i = 0;
@@ -112,14 +112,18 @@ int get_number(unsigned int line)
 		i++;
 	}
 	cmd[i] = '\0';
+	for (j = 0; j < 10; j++)
+	{
+		if (cmd[0] == ('0' + (char) j))
+			condition = 1;
+	}
+	if (condition == 0)
+	{
+		free(cmd);
+		error_handler(ERR_PUSH, line);
+	}
 	result = atoi(cmd);
+
 	free(cmd);
 	return (result);
 }
-/*
-int main(void)
-{
-	printf("==%d==\n",get_number(0));
-	return (0);
-}
-*/
