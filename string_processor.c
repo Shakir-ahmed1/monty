@@ -46,16 +46,26 @@ char *get_command(unsigned int line, stack_t **stack)
 			i++;
 		temp++;
 	}
-	while (*temp == ' ')
-	{
-		temp++;
-	}
 	cmd = malloc(sizeof(char) * 16);
 	if (cmd == NULL)
 	{
 		free_stack(*stack);
 		error_handler(ERR_MALLOC, line);
 	}
+	if (*temp == '#')
+	{
+		cmd[0] = 'n';
+		cmd[1] = 'o';
+		cmd[2] = 'p';
+		cmd[3] = '\0';
+		return (cmd);
+	}
+
+	while (*temp == ' ')
+	{
+		temp++;
+	}
+
 	if (*temp == '\n')
 	{
 		cmd[0] = 'n';
