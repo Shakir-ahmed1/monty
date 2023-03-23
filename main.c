@@ -8,6 +8,7 @@ instruction_t instructions[] = {
 	{"push", push},
 	{"pall", pall},
 	{"nop", nop},
+	{"pint", pint},
 	{NULL,NULL}
 };
 	len = line_count();
