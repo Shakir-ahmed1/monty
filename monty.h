@@ -66,6 +66,7 @@ void add(stack_t **stack, unsigned int line_number);
 void sub(stack_t **stack, unsigned int line_number);
 void mul(stack_t **stack, unsigned int line_number);
 void divv(stack_t **stack, unsigned int line_number);
+void mod(stack_t **stack, unsigned int line_number);
 char *get_command(unsigned int line, stack_t **stack);
 int get_number(unsigned int line, stack_t **stack);
 unsigned int line_manager(unsigned int line);

@@ -131,3 +131,17 @@ void divv(stack_t **stack, unsigned int line_number)
 	(*stack)->next->n = (*stack)->next->n / (*stack)->n;
 	pop(stack, line_number);
 }
+void mod(stack_t **stack, unsigned int line_number)
+{
+	if (*stack == NULL)
+		error_handler(ERR_MOD, line_number);
+	if ((*stack)->next == NULL)
+	{
+		free(*stack);
+		error_handler(ERR_MOD, line_number);
+	}
+	if ((*stack)->n == 0)
+		error_handler(ERR_ZERO, line_number);
+	(*stack)->next->n = (*stack)->next->n % (*stack)->n;
+	pop(stack, line_number);
+}
