@@ -14,11 +14,6 @@ void push(stack_t **stack, unsigned int line_number)
 {
 	stack_t *new;
 
-/*	if (stack == NULL)
-	{
-		fprintf(stderr, "Error: invalid stack\n");
-		exit(EXIT_FAILURE);
-	}*/
 	new = malloc(sizeof(stack_t));
 	if (new == NULL)
 		error_handler(ERR_MALLOC, line_number);
@@ -35,23 +30,15 @@ void push(stack_t **stack, unsigned int line_number)
 		if (*stack)
 			(*stack)->prev = new;
 		(*stack) = new;
-/*		(*stack)->next = new;
-		new->next = NULL;
-		new->prev = *stack;
-		(*stack) = new;*/
 	}
 }
 void pall(stack_t **stack, unsigned int line_number)
 {
 	stack_t *temp;
 
-	(void) temp;
 	(void) line_number;
 	if (stack == NULL)
-	{
-		fprintf(stderr, "Error: invalid stack\n");
-		exit(EXIT_FAILURE);
-	}
+		error_handler(ERR_EMPTYSTACK, line_number);
 	temp = *stack;
 	while (temp)
 	{

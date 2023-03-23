@@ -25,6 +25,13 @@ instruction_t instructions[] = {
 				break;
 			}
 		}
+		if (j == CMD_COUNT)
+		{
+		fprintf(stderr, "L%d: unknown instruction %s\n", i, command);
+		free(commands);
+		free(command);
+		exit(EXIT_FAILURE);
+		}
 		instructions[j].f(stack, i);
 	}
 }
