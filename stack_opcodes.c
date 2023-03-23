@@ -19,18 +19,10 @@ void push(stack_t **stack, unsigned int line_number)
 		error_handler(ERR_MALLOC, line_number);
 	new->n = get_number(line_number);
 	new->prev = NULL;
-	if (*stack == NULL)
-	{
-		new->next = NULL;
-		*stack = new;
-	}
-	else
-	{
-		new->next = *stack;
-		if (*stack)
-			(*stack)->prev = new;
-		(*stack) = new;
-	}
+	new->next = *stack;
+	if (*stack)
+		(*stack)->prev = new;
+	(*stack) = new;
 }
 void pall(stack_t **stack, unsigned int line_number)
 {

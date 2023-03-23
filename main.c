@@ -55,14 +55,14 @@ int main (int argc, char *argv[])
 	fd = open(argv[1], O_RDONLY); 
 	if (fd == -1)
 	{
-		fprintf(stderr, "Error: Can't open file %s", argv[1]);
+		fprintf(stderr, "Error: Can't open file %s\n", argv[1]);
 		free(commands);
 		exit(EXIT_FAILURE);
 	}
 	fdr = read(fd, commands, 10000);
 	if (fdr == -1)
 	{
-		fprintf(stderr, "Error: Can't read file %s", argv[1]);
+		fprintf(stderr, "Error: Can't read file %s\n", argv[1]);
 		free(commands);
 		exit(EXIT_FAILURE);
 	}
@@ -70,5 +70,5 @@ int main (int argc, char *argv[])
 	executer(&head);
 	free(commands);
 	free_stack(head);
-	return (0);	
+	return (0);
 }

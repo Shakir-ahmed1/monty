@@ -3,7 +3,8 @@
  * free_dlistint - frees all elements of the linked list
  * @head: the head of the list
  */
-void free_stack(stack_t *head)
+/*
+ * void free_stack(stack_t *head)
 {
 	stack_t *temp;
 
@@ -16,5 +17,11 @@ void free_stack(stack_t *head)
 		free(head);
 		head = temp;
 	}
+}
+*/
+void free_stack(stack_t *head)
+{
+	(void) *temp;
+
 }
 
