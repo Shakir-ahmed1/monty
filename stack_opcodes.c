@@ -15,11 +15,11 @@ void push(stack_t **stack, unsigned int line_number)
 	stack_t *new, *temp;
 
 	(void) temp;
-	if (stack == NULL)
+/*	if (stack == NULL)
 	{
 		fprintf(stderr, "Error: invalid stack\n");
 		exit(EXIT_FAILURE);
-	}
+	}*/
 	new = malloc(sizeof(stack_t));
 	if (new == NULL)
 	{
