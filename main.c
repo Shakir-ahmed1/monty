@@ -15,7 +15,7 @@ instruction_t instructions[] = {
 	len = line_count(commands);
 	for (i = 1; i < len; i++)
 	{
-		command = get_command(i);
+		command = get_command(i, stack);
 		for (j = 0; j < CMD_COUNT; j++)
 		{
 		/*	printf("=%s=",command);*/

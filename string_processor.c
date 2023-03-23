@@ -33,7 +33,7 @@ unsigned int line_manager(unsigned int line)
  * @line: the line to extract from
  * Return: the command name
  */
-char *get_command(unsigned int line)
+char *get_command(unsigned int line, stack_t **stack)
 {
 	unsigned int i = 1;
 	char *cmd;
@@ -52,7 +52,10 @@ char *get_command(unsigned int line)
 	}
 	cmd = malloc(sizeof(char) * 16);
 	if (cmd == NULL)
-		return (NULL);
+	{
+		free_stack(*stack);
+		error_handler(ERR_MALLOC, line);
+	}
 	if (*temp == '\n')
 	{
 		cmd[0] = 'n';
