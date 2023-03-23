@@ -81,3 +81,53 @@ void swap(stack_t **stack, unsigned int line_number)
 	(*stack)->n = (*stack)->next->n;
 	(*stack)->next->n = i;
 }
+void add(stack_t **stack, unsigned int line_number)
+{
+	if (*stack == NULL)
+		error_handler(ERR_ADD, line_number);
+	if ((*stack)->next == NULL)
+	{
+		free(*stack);
+		error_handler(ERR_ADD, line_number);
+	}
+	(*stack)->next->n = (*stack)->n + (*stack)->next->n;
+	pop(stack, line_number);
+}
+void sub(stack_t **stack, unsigned int line_number)
+{
+	if (*stack == NULL)
+		error_handler(ERR_SUB, line_number);
+	if ((*stack)->next == NULL)
+	{
+		free(*stack);
+		error_handler(ERR_SUB, line_number);
+	}
+	(*stack)->next->n = (*stack)->next->n - (*stack)->n;
+	pop(stack, line_number);
+}
+void mul(stack_t **stack, unsigned int line_number)
+{
+	if (*stack == NULL)
+		error_handler(ERR_MUL, line_number);
+	if ((*stack)->next == NULL)
+	{
+		free(*stack);
+		error_handler(ERR_MUL, line_number);
+	}
+	(*stack)->next->n = (*stack)->n * (*stack)->next->n;
+	pop(stack, line_number);
+}
+void divv(stack_t **stack, unsigned int line_number)
+{
+	if (*stack == NULL)
+		error_handler(ERR_DIV, line_number);
+	if ((*stack)->next == NULL)
+	{
+		free(*stack);
+		error_handler(ERR_DIV, line_number);
+	}
+	if ((*stack)->n == 0)
+		error_handler(ERR_ZERO, line_number);
+	(*stack)->next->n = (*stack)->next->n / (*stack)->n;
+	pop(stack, line_number);
+}

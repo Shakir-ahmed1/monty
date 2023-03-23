@@ -18,6 +18,10 @@ instruction_t instructions[] = {
 	{"pint", pint},
 	{"pop", pop},
 	{"swap", swap},
+	{"add", add},
+	{"sub", sub},
+	{"mul", mul},
+	{"div", divv},
 	{"nop", nop},
 	{NULL,NULL}
 };

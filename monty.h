@@ -12,6 +12,7 @@
 #define CMD_COUNT 10
 
 /* error macros */
+#define ERR_ZERO 3
 #define ERR_MALLOC 4
 #define ERR_PUSH 5
 #define ERR_EMPTYSTACK 6
@@ -61,6 +62,10 @@ void nop(stack_t **stack, unsigned int line_number);
 void pint(stack_t **stack, unsigned int line_number);
 void pop(stack_t **stack, unsigned int line_number);
 void swap(stack_t **stack, unsigned int line_number);
+void add(stack_t **stack, unsigned int line_number);
+void sub(stack_t **stack, unsigned int line_number);
+void mul(stack_t **stack, unsigned int line_number);
+void divv(stack_t **stack, unsigned int line_number);
 char *get_command(unsigned int line, stack_t **stack);
 int get_number(unsigned int line, stack_t **stack);
 unsigned int line_manager(unsigned int line);
