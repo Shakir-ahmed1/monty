@@ -63,6 +63,5 @@ int main (int argc, char *argv[])
 	executer(&head);
 	free(commands);
 	free_stack(head);
-	printf("DONE\n");
 	return (0);	
 }
