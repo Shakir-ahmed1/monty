@@ -68,7 +68,6 @@ void pall(stack_t **stack, unsigned int line_number)
 }
 void pint(stack_t **stack, unsigned int line_number)
 {
-	stack_t *temp;
 
 	if (*stack == NULL)
 		error_handler(ERR_EMPTYSTACK, line_number);
