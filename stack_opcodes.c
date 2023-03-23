@@ -70,8 +70,13 @@ void pop(stack_t **stack, unsigned int line_number)
 void swap(stack_t **stack, unsigned int line_number)
 {
 	int i;
-	if (*stack == NULL || (*stack)->next == NULL)
+	if (*stack == NULL)
 		error_handler(ERR_SWAP, line_number);
+	if ((*stack)->next == NULL)
+	{
+		free(*stack);
+		error_handler(ERR_SWAP, line_number);
+	}
 	i = (*stack)->n;
 	(*stack)->n = (*stack)->next->n;
 	(*stack)->next->n = i;
