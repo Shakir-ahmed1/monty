@@ -9,7 +9,7 @@
 #include <unistd.h>
 #include <string.h>
 
-#define CMD_COUNT 4
+#define CMD_COUNT 10
 
 /* error macros */
 #define ERR_MALLOC 4
@@ -60,6 +60,7 @@ void pall(stack_t **stack, unsigned int line_number);
 void nop(stack_t **stack, unsigned int line_number);
 void pint(stack_t **stack, unsigned int line_number);
 void pop(stack_t **stack, unsigned int line_number);
+void swap(stack_t **stack, unsigned int line_number);
 char *get_command(unsigned int line, stack_t **stack);
 int get_number(unsigned int line, stack_t **stack);
 unsigned int line_manager(unsigned int line);

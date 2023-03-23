@@ -67,3 +67,12 @@ void pop(stack_t **stack, unsigned int line_number)
 	(*stack)->prev = NULL;
 	free(temp);
 }
+void swap(stack_t **stack, unsigned int line_number)
+{
+	int i;
+	if (*stack == NULL || (*stack)->next == NULL)
+		error_handler(ERR_SWAP, line_number);
+	i = (*stack)->n;
+	(*stack)->n = (*stack)->next->n;
+	(*stack)->next->n = i;
+}

@@ -1,18 +1,27 @@
 #include "monty.h"
 char *commands;
-
+int inst_len(instruction_t *inst)
+{
+	int i;
+	for (i = 0; inst[i].opcode != NULL;)
+		i++;
+	return i;	
+}
 void executer(stack_t **stack)
 {
-	unsigned int len = 0, i, j;
+	unsigned int len = 0, i, j, len1;
 	char *command;
+
 instruction_t instructions[] = {
 	{"push", push},
 	{"pall", pall},
 	{"pint", pint},
 	{"pop", pop},
+	{"swap", swap},
 	{"nop", nop},
 	{NULL,NULL}
 };
+	len1 = inst_len(instructions);
 	len = line_count(commands);
 	for (i = 1; i < len; i++)
 	{
@@ -26,7 +35,7 @@ instruction_t instructions[] = {
 				break;
 			}
 		}
-		if (j == CMD_COUNT)
+		if (j == len1)
 		{
 		fprintf(stderr, "L%d: unknown instruction %s\n", i, command);
 		free(commands);
