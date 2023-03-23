@@ -21,7 +21,7 @@
 */
 void free_stack(stack_t *head)
 {
-	(void) *temp;
+	(void) head;
 
 }
 
