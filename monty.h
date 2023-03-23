@@ -9,7 +9,7 @@
 #include <unistd.h>
 #include <string.h>
 
-#define CMD_COUNT 2
+#define CMD_COUNT 3
 
 /* error macros */
 #define ERR_MALLOC 4
@@ -57,6 +57,7 @@ typedef struct instruction_s
 
 void push(stack_t **stack, unsigned int line_number);
 void pall(stack_t **stack, unsigned int line_number);
+void nop(stack_t **stack, unsigned int line_number);
 char *get_command(unsigned int line);
 int get_number(unsigned int line);
 unsigned int line_manager(unsigned int line);

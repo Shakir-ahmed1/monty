@@ -50,11 +50,17 @@ char *get_command(unsigned int line)
 	{
 		temp++;
 	}
-	if (*temp == '\n')
-		return (NULL);
 	cmd = malloc(sizeof(char) * 16);
 	if (cmd == NULL)
 		return (NULL);
+	if (*temp == '\n')
+	{
+		cmd[0] = 'n';
+		cmd[1] = 'o';
+		cmd[2] = 'p';
+		cmd[3] = '\0';
+		return (cmd);
+	}
 	i = 0;
 
 	while ((*temp != ' ' && *temp != '\n') && i < 16)

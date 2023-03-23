@@ -6,7 +6,9 @@ void executer(stack_t **stack)
 	char *command;
 instruction_t instructions[] = {
 	{"push", push},
-	{"pall", pall}
+	{"pall", pall},
+	{"nop", nop},
+	{NULL,NULL}
 };
 	len = line_count();
 	for (i = 1; i < len; i++)
@@ -14,6 +16,7 @@ instruction_t instructions[] = {
 		command = get_command(i);
 		for (j = 0; j < CMD_COUNT; j++)
 		{
+		/*	printf("=%s=",command);*/
 			if (strcmp(instructions[j].opcode, command) == 0)
 			{
 				free(command);

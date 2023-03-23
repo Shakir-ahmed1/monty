@@ -1,5 +1,10 @@
 #include "monty.h"
 char *commands;
+void nop(stack_t **stack, unsigned int line_number)
+{
+	(void) stack;
+	(void) line_number;
+}
 /**
  * pushs - performes push at the stack
  * stack - the pointer to the tack
@@ -31,16 +36,15 @@ void push(stack_t **stack, unsigned int line_number)
 	}
 	else
 	{
-		/*new->prev = NULL;
+		new->prev = NULL;
 		new->next = *stack;
 		if (*stack)
 			(*stack)->prev = new;
 		(*stack) = new;
-		*/
-		(*stack)->next = new;
+/*		(*stack)->next = new;
 		new->next = NULL;
 		new->prev = *stack;
-		(*stack) = new;
+		(*stack) = new;*/
 		return;
 	}
 }
