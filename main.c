@@ -1,5 +1,6 @@
 #include "monty.h"
 char *commands;
+
 void executer(stack_t **stack)
 {
 	unsigned int len = 0, i, j;
@@ -11,7 +12,7 @@ instruction_t instructions[] = {
 	{"pint", pint},
 	{NULL,NULL}
 };
-	len = line_count(1);
+	len = line_count(command);
 	for (i = 1; i < len; i++)
 	{
 		command = get_command(i);

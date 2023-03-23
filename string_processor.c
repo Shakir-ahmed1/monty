@@ -1,11 +1,11 @@
 #include "monty.h"
-unsigned int line_count(unsigned int i)
+unsigned int line_count(char *command)
 {
 	unsigned int j = 0;
 
-	while (commands[j] != '\0')
+	while (command[j] != '\0')
 	{
-		if (commands[j] == '\n')
+		if (command[j] == '\n')
 			i++;
 		j++;
 	}
