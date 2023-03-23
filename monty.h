@@ -62,6 +62,7 @@ void pint(stack_t **stack, unsigned int line_number);
 char *get_command(unsigned int line);
 int get_number(unsigned int line);
 unsigned int line_manager(unsigned int line);
-unsigned int line_count();
+unsigned int line_count(unsigned int i);
 void error_handler(int a, int li);
+void free_stack(stack_t *head);
 #endif

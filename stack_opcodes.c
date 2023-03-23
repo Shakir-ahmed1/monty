@@ -12,9 +12,8 @@ void nop(stack_t **stack, unsigned int line_number)
  */
 void push(stack_t **stack, unsigned int line_number)
 {
-	stack_t *new, *temp;
+	stack_t *new;
 
-	(void) temp;
 /*	if (stack == NULL)
 	{
 		fprintf(stderr, "Error: invalid stack\n");
@@ -22,21 +21,16 @@ void push(stack_t **stack, unsigned int line_number)
 	}*/
 	new = malloc(sizeof(stack_t));
 	if (new == NULL)
-	{
-		fprintf(stderr, "Error: malloc faliled\n");
-		exit(EXIT_FAILURE);
-	}
+		error_handler(ERR_MALLOC, line_number);
 	new->n = get_number(line_number);
-	new->next = NULL;
+	new->prev = NULL;
 	if (*stack == NULL)
 	{
 		new->next = NULL;
-		new->prev = NULL;
 		*stack = new;
 	}
 	else
 	{
-		new->prev = NULL;
 		new->next = *stack;
 		if (*stack)
 			(*stack)->prev = new;
@@ -45,7 +39,6 @@ void push(stack_t **stack, unsigned int line_number)
 		new->next = NULL;
 		new->prev = *stack;
 		(*stack) = new;*/
-		return;
 	}
 }
 void pall(stack_t **stack, unsigned int line_number)

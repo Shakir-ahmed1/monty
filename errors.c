@@ -23,5 +23,6 @@ void error_handler(int a, int li)
 		fprintf(stderr,"L%d: can't mod, stack too short\n", li);
 	else if (a == ERR_PCHAR)
 		fprintf(stderr,"L%d: can't pchar, stack empty\n", li);
+	free(commands);
 	exit(EXIT_FAILURE);
 }

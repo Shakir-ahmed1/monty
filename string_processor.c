@@ -1,7 +1,7 @@
 #include "monty.h"
-unsigned int line_count()
+unsigned int line_count(unsigned int i)
 {
-	int i = 1, j = 0;
+	unsigned int j = 0;
 
 	while (commands[j] != '\0')
 	{
@@ -80,7 +80,7 @@ char *get_command(unsigned int line)
  */
 int get_number(unsigned int line)
 {
-	unsigned int i = 1, j, condition = 0;
+	unsigned int i = 1, j = 0, condition = 0;
 	int result = 0;
 	char *cmd;
 	char *temp;
@@ -107,7 +107,10 @@ int get_number(unsigned int line)
 		i++;
 	}
 	if (*temp == '\n')
+	{
+		free(cmd);
 		error_handler(ERR_PUSH, line);
+	}
 	while (*temp == ' ')
 		temp++;
 	i = 0;

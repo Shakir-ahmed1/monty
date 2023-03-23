@@ -2,7 +2,7 @@
 char *commands;
 void executer(stack_t **stack)
 {
-	unsigned int len, i, j;
+	unsigned int len = 0, i, j;
 	char *command;
 instruction_t instructions[] = {
 	{"push", push},
@@ -11,7 +11,7 @@ instruction_t instructions[] = {
 	{"pint", pint},
 	{NULL,NULL}
 };
-	len = line_count();
+	len = line_count(1);
 	for (i = 1; i < len; i++)
 	{
 		command = get_command(i);
@@ -38,21 +38,27 @@ int main (int argc, char *argv[])
 	if (argc != 2)
 	{
 		fprintf(stderr, "USAGE: monty file\n");
+		free(commands);
 		exit(EXIT_FAILURE);
 	}
 	fd = open(argv[1], O_RDONLY); 
 	if (fd == -1)
 	{
 		fprintf(stderr, "Error: Can't open file %s", argv[1]);
+		free(commands);
 		exit(EXIT_FAILURE);
 	}
 	fdr = read(fd, commands, 10000);
 	if (fdr == -1)
 	{
 		fprintf(stderr, "Error: Can't read file %s", argv[1]);
+		free(commands);
 		exit(EXIT_FAILURE);
 	}
 	head = NULL;
 	executer(&head);
+	free(commands);
+	free_stack(head);
+	printf("DONE\n");
 	return (0);	
 }
