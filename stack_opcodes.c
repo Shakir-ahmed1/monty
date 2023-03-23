@@ -50,3 +50,20 @@ void pint(stack_t **stack, unsigned int line_number)
 		error_handler(ERR_EMPTYSTACK, line_number);
 	printf("%d\n", (*stack)->n);
 }
+void pop(stack_t **stack, unsigned int line_number)
+{
+	stack_t *temp;
+
+	if (*stack == NULL)
+		error_handler(ERR_POP, line_number);
+	temp = *stack;
+	if (temp->next == NULL)
+	{
+		free(temp);
+		*stack = NULL;
+		return;
+	}	
+	*stack = temp->next;
+	(*stack)->prev = NULL;
+	free(temp);
+}

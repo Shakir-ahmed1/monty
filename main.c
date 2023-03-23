@@ -8,15 +8,16 @@ void executer(stack_t **stack)
 instruction_t instructions[] = {
 	{"push", push},
 	{"pall", pall},
-	{"nop", nop},
 	{"pint", pint},
+	{"pop", pop},
+	{"nop", nop},
 	{NULL,NULL}
 };
 	len = line_count(commands);
 	for (i = 1; i < len; i++)
 	{
 		command = get_command(i, stack);
-		for (j = 0; j < CMD_COUNT; j++)
+		for (j = 0; instructions[j].opcode != NULL; j++)
 		{
 		/*	printf("=%s=",command);*/
 			if (strcmp(instructions[j].opcode, command) == 0)
