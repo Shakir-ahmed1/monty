@@ -78,7 +78,7 @@ char *get_command(unsigned int line)
  * @line: the line to extract from
  * Return: the command name
  */
-int get_number(unsigned int line)
+int get_number(unsigned int line, stack_t **stack)
 {
 	unsigned int i = 1, j = 0, condition = 0;
 	int result = 0;
@@ -96,10 +96,16 @@ int get_number(unsigned int line)
 	while (*temp == ' ')
 		temp++;
 	if (*temp == '\n')
+	{
+		free_stack(*stack);
 		exit(EXIT_FAILURE);
+	}
 	cmd = malloc(sizeof(char) * 16);
 	if (cmd == NULL)
+	{
+		free_stack(*stack);
 		error_handler(ERR_MALLOC, 0);
+	}
 	i = 0;
 	while ((*temp != ' ' && *temp != '\n') && i < 16)
 	{
@@ -109,6 +115,7 @@ int get_number(unsigned int line)
 	if (*temp == '\n')
 	{
 		free(cmd);
+		free_stack(*stack);
 		error_handler(ERR_PUSH, line);
 	}
 	while (*temp == ' ')
@@ -129,6 +136,7 @@ int get_number(unsigned int line)
 	if (condition == 0)
 	{
 		free(cmd);
+		free_stack(*stack);
 		error_handler(ERR_PUSH, line);
 	}
 	result = atoi(cmd);

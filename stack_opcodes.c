@@ -13,11 +13,16 @@ void nop(stack_t **stack, unsigned int line_number)
 void push(stack_t **stack, unsigned int line_number)
 {
 	stack_t *new;
+	int i;
 
+	i = get_number(line_number, stack);
 	new = malloc(sizeof(stack_t));
 	if (new == NULL)
+	{
+		free_stack(*stack);
 		error_handler(ERR_MALLOC, line_number);
-	new->n = get_number(line_number);
+	}
+	new->n = i;
 	new->prev = NULL;
 	new->next = *stack;
 	if (*stack)
