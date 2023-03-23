@@ -12,7 +12,7 @@ instruction_t instructions[] = {
 	{"pint", pint},
 	{NULL,NULL}
 };
-	len = line_count(command);
+	len = line_count(commands);
 	for (i = 1; i < len; i++)
 	{
 		command = get_command(i);
@@ -30,10 +30,13 @@ instruction_t instructions[] = {
 }
 int main (int argc, char *argv[])
 {
-	int fd, fdr;
+	int fd, fdr, i;
 	stack_t *head;
 
 	commands = malloc(sizeof(char)*10000);
+
+	for(i = 0; i < 1000; i++)
+		commands[i] = 0;
 	if (!commands)
 		error_handler(ERR_MALLOC, 0);
 	if (argc != 2)
