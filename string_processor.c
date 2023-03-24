@@ -52,6 +52,10 @@ char *get_command(unsigned int line, stack_t **stack)
 		free_stack(*stack);
 		error_handler(ERR_MALLOC, line);
 	}
+	while (*temp == ' ')
+	{
+		temp++;
+	}
 	if (*temp == '#')
 	{
 		cmd[0] = 'n';
@@ -61,10 +65,6 @@ char *get_command(unsigned int line, stack_t **stack)
 		return (cmd);
 	}
 
-	while (*temp == ' ')
-	{
-		temp++;
-	}
 
 	if (*temp == '\n')
 	{
