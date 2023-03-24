@@ -61,8 +61,10 @@ void push(stack_t **stack, unsigned int line_number)
 			*stack = new;
 			return;
 		}
+
 		while (temp->next)
 			temp = temp->next;
+                new->next = NULL;
 		temp->next = new;
 		new->prev = temp;
 	}
