@@ -12,6 +12,7 @@
 #define CMD_COUNT 10
 
 /* error macros */
+#define ERR_PCHARANGE 2
 #define ERR_ZERO 3
 #define ERR_MALLOC 4
 #define ERR_PUSH 5
@@ -67,6 +68,8 @@ void sub(stack_t **stack, unsigned int line_number);
 void mul(stack_t **stack, unsigned int line_number);
 void divv(stack_t **stack, unsigned int line_number);
 void mod(stack_t **stack, unsigned int line_number);
+void pchar(stack_t **stack, unsigned int line_number);
+void pstr(stack_t **stack, unsigned int line_number);
 char *get_command(unsigned int line, stack_t **stack);
 int get_number(unsigned int line, stack_t **stack);
 unsigned int line_manager(unsigned int line);
