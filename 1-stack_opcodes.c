@@ -63,3 +63,13 @@ void rotr(stack_t **stack, unsigned int line_number)
 	*stack = temp;
 
 }
+void stackmode(stack_t **stack, unsigned int line_number)
+{
+	(void) stack;
+	(void) line_number;
+}
+void queuemode(stack_t **stack, unsigned int line_number)
+{
+	(void) stack;
+	(void) line_number;
+}

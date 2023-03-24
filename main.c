@@ -27,6 +27,8 @@ instruction_t instructions[] = {
 	{"pstr", pstr},
 	{"rotl", rotl},
 	{"rotr", rotr},
+	{"stack", stackmode},
+	{"queue", queuemode},
 	{"nop", nop},
 	{NULL,NULL}
 };
