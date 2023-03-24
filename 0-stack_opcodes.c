@@ -5,6 +5,25 @@ void nop(stack_t **stack, unsigned int line_number)
 	(void) stack;
 	(void) line_number;
 }
+int check_mode(unsigned int line, stack_t **stack)
+{
+	unsigned int i = 0;
+	int mode = 0;
+	char *t;
+	char st[] = "stack";
+	char qu[] = "queue";
+
+	for (i = 1; i < line; i++)
+	{
+		t = get_command(i,stack);
+		if (strcmp(t, st) == 0)
+			mode = 0;
+		if (strcmp(t, qu) == 0)
+			mode = 1;
+		free(t);
+	}
+	return (mode);
+}
 /**
  * pushs - performes push at the stack
  * stack - the pointer to the tack
@@ -12,7 +31,7 @@ void nop(stack_t **stack, unsigned int line_number)
  */
 void push(stack_t **stack, unsigned int line_number)
 {
-	stack_t *new;
+	stack_t *new, *temp;
 	int i;
 
 	i = get_number(line_number, stack);
@@ -22,12 +41,32 @@ void push(stack_t **stack, unsigned int line_number)
 		free_stack(*stack);
 		error_handler(ERR_MALLOC, line_number);
 	}
+	if (check_mode(line_number, stack) == 0)
+	{
 	new->n = i;
 	new->prev = NULL;
 	new->next = *stack;
 	if (*stack)
 		(*stack)->prev = new;
 	(*stack) = new;
+	}
+	else
+	{
+		temp = *stack;
+		new->n = i;
+		new->next = NULL;
+		if (*stack == NULL)
+		{
+			new->prev = NULL;
+			*stack = new;
+			return;
+		}
+		while (temp->next)
+			temp = temp->next;
+		temp->next = new;
+		new->prev = temp;
+	}
+
 }
 void pall(stack_t **stack, unsigned int line_number)
 {
