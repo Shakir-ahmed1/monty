@@ -61,10 +61,10 @@ int main (int argc, char *argv[])
 
 	commands = malloc(sizeof(char)*40000);
 
+	if (commands == NULL)
+		error_handler(ERR_MALLOC, 0);
 	for(i = 0; i < 40000; i++)
 		commands[i] = 0;
-	if (!commands)
-		error_handler(ERR_MALLOC, 0);
 	if (argc != 2)
 	{
 		fprintf(stderr, "USAGE: monty file\n");
