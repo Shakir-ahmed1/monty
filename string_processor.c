@@ -11,23 +11,6 @@ unsigned int line_count()
 	}
 	return i;
 }
-unsigned int line_manager(unsigned int line)
-{
-	int i = 0;
-	unsigned int j = 1;
-
-	while (commands[i] != '\0' && j < line)
-	{
-		i++;
-		if (commands[i] == '\n')
-			j++;
-	}
-	if (commands[i] == '\0')
-		return (0);
-	if (commands[i] != '\0' && commands[i + 1] != '\0' && i != 0) 
-		i++;
-	return (i);
-}
 /**
  * get_command - it extracts the command
  * @line: the line to extract from

@@ -10,15 +10,17 @@ int check_mode(unsigned int line, stack_t **stack)
 	unsigned int i = 0;
 	int mode = 0;
 	char *t;
-	char st[] = "stack";
-	char qu[] = "queue";
+	char st[] = "ack";
+	char qu[] = "eue";
 
-	for (i = 1; i < line && i < 40; i++)
+	if (line > 40)
+		return (mode);
+	for (i = 1; i < line; i++)
 	{
 		t = get_command(i,stack);
-		if (strcmp(t, st) == 0)
+		if (strcmp(&t[2], st) == 0)
 			mode = 0;
-		if (strcmp(t, qu) == 0)
+		if (strcmp(&t[2], qu) == 0)
 			mode = 1;
 		free(t);
 	}
@@ -41,9 +43,9 @@ void push(stack_t **stack, unsigned int line_number)
 		free_stack(*stack);
 		error_handler(ERR_MALLOC, line_number);
 	}
+	new->n = i;
 	if (check_mode(line_number, stack) == 0)
 	{
-	new->n = i;
 	new->prev = NULL;
 	new->next = *stack;
 	if (*stack)
@@ -53,8 +55,6 @@ void push(stack_t **stack, unsigned int line_number)
 	else
 	{
 		temp = *stack;
-		new->n = i;
-		new->next = NULL;
 		if (*stack == NULL)
 		{
 			new->prev = NULL;
