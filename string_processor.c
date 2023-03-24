@@ -146,7 +146,6 @@ int get_number(unsigned int line, stack_t **stack)
 			condition = 1;
 	}
 	sprintf(hold, "%d", atoi(cmd));
-	printf("%s == %s\n", hold, cmd);
 	if (strlen(cmd) != strlen(hold))
 		condition = 0;
 	if (cmd[0] == '-' && cmd[1] == '0')
