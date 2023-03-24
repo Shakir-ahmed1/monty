@@ -13,7 +13,7 @@ int check_mode(unsigned int line, stack_t **stack)
 	char st[] = "stack";
 	char qu[] = "queue";
 
-	for (i = 1; i < line; i++)
+	for (i = 1; i < line && i < 100; i++)
 	{
 		t = get_command(i,stack);
 		if (strcmp(t, st) == 0)
