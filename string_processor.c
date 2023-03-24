@@ -95,8 +95,7 @@ int get_number(unsigned int line, stack_t **stack)
 {
 	unsigned int i = 1, j = 0, condition = 0;
 	int result = 0;
-	char *cmd;
-	char *temp;
+	char *cmd, *temp, hold[21];
 
 	temp = commands;
 
@@ -146,6 +145,12 @@ int get_number(unsigned int line, stack_t **stack)
 		if (cmd[0] == ('0' + (char) j) || (cmd[1] == ('0' + (char) j) && cmd[0] == '-'))
 			condition = 1;
 	}
+	sprintf(hold, "%d", atoi(cmd));
+	printf("%s == %s\n", hold, cmd);
+	if (strlen(cmd) != strlen(hold))
+		condition = 0;
+	if (cmd[0] == '-' && cmd[1] == '0')
+		condition = 1;
 	if (condition == 0)
 	{
 		free(cmd);
