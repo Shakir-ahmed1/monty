@@ -1,5 +1,10 @@
 #include "monty.h"
 char *commands;
+/**
+ * inst_len - calculates the number of instructions possible
+ * @inst: the instruction array
+ * Return: the number of instructions
+ */
 int inst_len(instruction_t *inst)
 {
 	int i;
@@ -7,6 +12,10 @@ int inst_len(instruction_t *inst)
 		i++;
 	return i;	
 }
+/**
+ * executer - it executes the commands in a file
+ * @stack: the head of the stack
+ */
 void executer(stack_t **stack)
 {
 	unsigned int len = 0, i, j, len1;
@@ -56,6 +65,13 @@ instruction_t instructions[] = {
 		instructions[j].f(stack, i);
 	}
 }
+/**
+ * main - entry point
+ * @argc: number of  argumnts passed by the program
+ * @argv: the arguments passed by the program
+ * Return: always 0
+ */
+
 int main (int argc, char *argv[])
 {
 	int fd, fdr, i;

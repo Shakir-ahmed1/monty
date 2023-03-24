@@ -1,10 +1,21 @@
 #include "monty.h"
 char *commands;
+/**
+ * nop - it ignores new lines comments
+ * @stack: the pointer to the stack
+ * @line_number: the line number in the given monty file
+ */
 void nop(stack_t **stack, unsigned int line_number)
 {
 	(void) stack;
 	(void) line_number;
 }
+/**
+ * check_mode - checks whether the insert mode is stack mode or push
+ * @stack: the pointer to the stack
+ * @line: the line number in the given monty file
+ * Return: the mode
+ */
 int check_mode(unsigned int line, stack_t **stack)
 {
 	unsigned int i = 0;
@@ -27,9 +38,9 @@ int check_mode(unsigned int line, stack_t **stack)
 	return (mode);
 }
 /**
- * pushs - performes push at the stack
- * stack - the pointer to the tack
- * line_number - the line number in the given monty file
+ * push - performes push at the stack
+ * @stack: the pointer to the stack
+ * @line_number: the line number in the given monty file
  */
 void push(stack_t **stack, unsigned int line_number)
 {
@@ -70,6 +81,11 @@ void push(stack_t **stack, unsigned int line_number)
 	}
 
 }
+/**
+ * pall - performes pall at the stack
+ * @stack: the pointer to the stack
+ * @line_number: the line number in the given monty file
+ */
 void pall(stack_t **stack, unsigned int line_number)
 {
 	stack_t *temp;
@@ -84,6 +100,11 @@ void pall(stack_t **stack, unsigned int line_number)
 		temp = temp->next;
 	}
 }
+/**
+ * pint - prints the to element of the stack
+ * @stack: the pointer to the stack
+ * @line_number: the line number in the given monty file
+ */
 void pint(stack_t **stack, unsigned int line_number)
 {
 
@@ -91,6 +112,11 @@ void pint(stack_t **stack, unsigned int line_number)
 		error_handler(ERR_EMPTYSTACK, line_number);
 	printf("%d\n", (*stack)->n);
 }
+/**
+ * pop - performes pop at the stack
+ * @stack: the pointer to the stack
+ * @line_number: the line number in the given monty file
+ */
 void pop(stack_t **stack, unsigned int line_number)
 {
 	stack_t *temp;
@@ -108,6 +134,11 @@ void pop(stack_t **stack, unsigned int line_number)
 	(*stack)->prev = NULL;
 	free(temp);
 }
+/**
+ * swap - performes swap at the stack
+ * @stack: the pointer to the stack
+ * @line_number: the line number in the given monty file
+ */
 void swap(stack_t **stack, unsigned int line_number)
 {
 	int i;
@@ -122,6 +153,11 @@ void swap(stack_t **stack, unsigned int line_number)
 	(*stack)->n = (*stack)->next->n;
 	(*stack)->next->n = i;
 }
+/**
+ * add - performes addition of the top elements of the stack
+ * @stack: the pointer to the stack
+ * @line_number: the line number in the given monty file
+ */
 void add(stack_t **stack, unsigned int line_number)
 {
 	if (*stack == NULL)
@@ -134,6 +170,11 @@ void add(stack_t **stack, unsigned int line_number)
 	(*stack)->next->n = (*stack)->n + (*stack)->next->n;
 	pop(stack, line_number);
 }
+/**
+ * sub - performes subtraciton of the top elements of the stack
+ * @stack: the pointer to the stack
+ * @line_number: the line number in the given monty file
+ */
 void sub(stack_t **stack, unsigned int line_number)
 {
 	if (*stack == NULL)
@@ -146,6 +187,11 @@ void sub(stack_t **stack, unsigned int line_number)
 	(*stack)->next->n = (*stack)->next->n - (*stack)->n;
 	pop(stack, line_number);
 }
+/**
+ * mul - performes multiplication of the top elements of the stack
+ * @stack: the pointer to the stack
+ * @line_number: the line number in the given monty file
+ */
 void mul(stack_t **stack, unsigned int line_number)
 {
 	if (*stack == NULL)
@@ -158,6 +204,11 @@ void mul(stack_t **stack, unsigned int line_number)
 	(*stack)->next->n = (*stack)->n * (*stack)->next->n;
 	pop(stack, line_number);
 }
+/**
+ * divv - performes division of the top elements of the stack
+ * @stack: the pointer to the stack
+ * @line_number: the line number in the given monty file
+ */
 void divv(stack_t **stack, unsigned int line_number)
 {
 	if (*stack == NULL)
@@ -172,6 +223,11 @@ void divv(stack_t **stack, unsigned int line_number)
 	(*stack)->next->n = (*stack)->next->n / (*stack)->n;
 	pop(stack, line_number);
 }
+/**
+ * mod - performes modulus of the top elements of the stack
+ * @stack: the pointer to the stack
+ * @line_number: the line number in the given monty file
+ */
 void mod(stack_t **stack, unsigned int line_number)
 {
 	if (*stack == NULL)

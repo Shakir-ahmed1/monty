@@ -1,4 +1,9 @@
 #include "monty.h"
+/**
+ * line_count - it counts the number of lines in the given line
+ *
+ * Return: number of lines
+ */
 unsigned int line_count()
 {
 	unsigned int j = 0, i = 1;
@@ -14,6 +19,7 @@ unsigned int line_count()
 /**
  * get_command - it extracts the command
  * @line: the line to extract from
+ * @stack: the head of the stack
  * Return: the command name
  */
 char *get_command(unsigned int line, stack_t **stack)
@@ -72,6 +78,7 @@ char *get_command(unsigned int line, stack_t **stack)
 /**
  * get_number - it extracts the command
  * @line: the line to extract from
+ * @stack: the head of the stack
  * Return: the command name
  */
 int get_number(unsigned int line, stack_t **stack)
