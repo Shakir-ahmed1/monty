@@ -143,7 +143,7 @@ int get_number(unsigned int line, stack_t **stack)
 	cmd[i] = '\0';
 	for (j = 0; j < 10; j++)
 	{
-		if (cmd[0] == ('0' + (char) j))
+		if (cmd[0] == ('0' + (char) j) || (cmd[1] == ('0' + (char) j) && cmd[0] == '-'))
 			condition = 1;
 	}
 	if (condition == 0)

@@ -26,7 +26,7 @@ void error_handler(int a, int li)
 	else if (a == ERR_ZERO)
 		fprintf(stderr,"L%d: division by zero\n", li);
 	else if (a == ERR_PCHARANGE)
-		fprintf(stderr,"L%d: can't pchar, stack empty\n", li);
+		fprintf(stderr,"L%d: can't pchar, value out of range\n", li);
 	free(commands);
 	exit(EXIT_FAILURE);
 }
