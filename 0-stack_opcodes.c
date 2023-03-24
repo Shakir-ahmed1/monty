@@ -13,7 +13,7 @@ int check_mode(unsigned int line, stack_t **stack)
 	char st[] = "ack";
 	char qu[] = "eue";
 
-	if (line > 40)
+	if (line > 50)
 		return (mode);
 	for (i = 1; i < line; i++)
 	{
