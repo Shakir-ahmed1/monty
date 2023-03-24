@@ -59,9 +59,9 @@ int main (int argc, char *argv[])
 	int fd, fdr, i;
 	stack_t *head;
 
-	commands = malloc(sizeof(char)*10000);
+	commands = malloc(sizeof(char)*40000);
 
-	for(i = 0; i < 1000; i++)
+	for(i = 0; i < 40000; i++)
 		commands[i] = 0;
 	if (!commands)
 		error_handler(ERR_MALLOC, 0);
@@ -78,7 +78,7 @@ int main (int argc, char *argv[])
 		free(commands);
 		exit(EXIT_FAILURE);
 	}
-	fdr = read(fd, commands, 10000);
+	fdr = read(fd, commands, 40000);
 	if (fdr == -1)
 	{
 		fprintf(stderr, "Error: Can't read file %s\n", argv[1]);
